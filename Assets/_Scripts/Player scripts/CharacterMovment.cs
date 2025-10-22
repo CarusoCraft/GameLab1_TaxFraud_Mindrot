@@ -27,9 +27,7 @@ public class PlayerMovement : MonoBehaviour
 
         // Get input from WASD keys
         float x = Input.GetAxis("Horizontal"); // A/D
-        Debug.Log(x);
         float z = Input.GetAxis("Vertical");   // W/S
-        Debug.Log(z);
 
         // Move relative to the player's forward direction
         Vector3 move = transform.right * x + transform.forward * z;
