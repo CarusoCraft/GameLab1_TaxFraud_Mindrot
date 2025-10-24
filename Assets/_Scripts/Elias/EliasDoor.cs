@@ -15,22 +15,19 @@ public class EliasDoor : MonoBehaviour
 
 
 
-    private void Awake()
-    {
-        
-    }
-
 
     //When the door is open
     public void DoorOpen()
     {
-
+        gameObject.SetActive(false);
+        Debug.Log("Door opens");
     }
 
 
     //When the door is closed
     public void DoorClose()
     {
-
+        gameObject.SetActive(true);
+        Debug.Log("Door close's");
     }
 }
