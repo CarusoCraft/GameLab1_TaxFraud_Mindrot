@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2395978135680996518}
   - component: {fileID: 4576158879353442955}
   - component: {fileID: 3913170885606225080}
-  - component: {fileID: 3623154783139256302}
+  - component: {fileID: 6667809238631349922}
   m_Layer: 0
   m_Name: Player_Inactive
   m_TagString: InActive
@@ -197,7 +197,7 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &3623154783139256302
+--- !u!114 &6667809238631349922
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -206,6 +206,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8195314721978495322}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2ed6d55085f08b49bdd798604b403b3, type: 3}
+  m_Script: {fileID: 11500000, guid: 7eed365cb2f2b1e45ab8d88b8a6b406d, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Script_SwapAbility
+  m_EditorClassIdentifier: Assembly-CSharp::playerNumber
+  bodyNumber: 0

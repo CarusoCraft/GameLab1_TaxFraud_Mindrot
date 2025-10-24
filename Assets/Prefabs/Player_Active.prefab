@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 6795259769081531454}
   - component: {fileID: 8117656126946689089}
   - component: {fileID: 3256644635569337498}
+  - component: {fileID: -2122080980749916997}
   m_Layer: 0
   m_Name: Player_Active
   m_TagString: Active
@@ -224,3 +225,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2ed6d55085f08b49bdd798604b403b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Script_SwapAbility
+  n: 1
+--- !u!114 &-2122080980749916997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6186614644394232580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7eed365cb2f2b1e45ab8d88b8a6b406d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::playerNumber
+  bodyNumber: 0

@@ -5,14 +5,15 @@ public class Script_SwapAbility : MonoBehaviour
 {
     private Rigidbody rb;
     private GameObject newBody;
-    private int swapNumber; // Used to identify the next body to swap to
-    public int bodyNumber;
-    private int n = 1; // nr of body you're swapping to
+    private GameObject[] allBodies;
+    [SerializeField] private int n = 1; // nr of body you're swapping to
+    private int x = 0; // iterator for allBodies array
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>(); // Gets the Rigidbody component
-        swapNumber = bodyNumber + 1;
+        allBodies = GameObject.FindGameObjectsWithTag("InActive"); // Finds all inactive bodies in the scene
+        n = gameObject.GetComponent<playerNumber>().bodyNumber + 1; // sets n to the next body number
     }
 
     private void Update()
@@ -36,30 +37,35 @@ public class Script_SwapAbility : MonoBehaviour
 
     private void OnSwapBody()
     {
-        Debug.Log("Swap Body Input Received");
-
         if (gameObject.tag == "Active") //checks if the current player is in control of an active body
         {
-            Debug.Log("is an active body");
-            Debug.Log("swap number is " + swapNumber);
             Debug.Log("n is " + n);
 
-            if (GameObject.FindWithTag("InActive") == true && swapNumber == n) //checks if there is an inactive body to swap to
+            while (allBodies[x].GetComponent<playerNumber>().bodyNumber != n) //looks for the correct body to swap to
+            {
+                x++;
+                Debug.Log("x is " + x);
+
+            }
+
+            if(allBodies[x].GetComponent<playerNumber>().bodyNumber == n)
             {
                 Debug.Log("did the swap");
 
-                newBody = GameObject.FindWithTag("InActive"); // Finding the next body to inhabit
                 gameObject.tag = "UsedPlayer"; //sets the current body to used
 
 
+
                 // Inhabits the new body
-                newBody.tag = "Active";
-                newBody.AddComponent<Script_SwapAbility>();
-                newBody.AddComponent<PlayerMovement>();
-                n++;
+                allBodies[x].tag = "Active";
+                allBodies[x].AddComponent<PlayerMovement>();
+                allBodies[x].AddComponent<Script_SwapAbility>();
+
             }
-
-
+            else
+            {
+                Debug.Log("didn't swap");
+            }
 
         }
 
