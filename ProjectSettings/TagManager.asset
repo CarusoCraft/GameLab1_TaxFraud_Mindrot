@@ -5,8 +5,8 @@ TagManager:
   serializedVersion: 3
   tags:
   - Active
-  - InActive
   - UsedPlayer
+  - InActive
   layers:
   - Default
   - TransparentFX
