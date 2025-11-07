@@ -7,6 +7,7 @@ TagManager:
   - Active
   - UsedPlayer
   - InActive
+  - NextBody
   layers:
   - Default
   - TransparentFX

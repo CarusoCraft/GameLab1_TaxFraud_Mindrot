@@ -1030,7 +1030,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -3929,11 +3929,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!4 &621135689 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4787427443590809762, guid: df4b742ca1b2d7e479db520a6eab67af, type: 3}
-  m_PrefabInstance: {fileID: 611012634}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &637856578
 GameObject:
   m_ObjectHideFlags: 0
@@ -10350,7 +10345,6 @@ Transform:
   - {fileID: 298828630}
   - {fileID: 1242048870}
   - {fileID: 1066720072}
-  - {fileID: 611012635}
   m_Father: {fileID: 803536934}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1839853061
