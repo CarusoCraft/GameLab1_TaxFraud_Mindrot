@@ -13,7 +13,7 @@ public class Script_SwapAbility : MonoBehaviour
     [Header("otherBodies")]
     [SerializeField] private GameObject[] allBodies; // array of all bodies in the scene
     private GameObject nextBody; // the body to swap to
-    private Vector3 nextPlayerPosition; // the position of the next body you're "swapping" to
+    [SerializeField] private Vector3 nextPlayerPosition; // the position of the next body you're "swapping" to
     private int n = 1; // nr of body you're swapping to
     private int x = 0; // iterator for allBodies array
     private int amountOfUsedBodies = 0; // counts how many bodies have been used already
@@ -57,7 +57,7 @@ public class Script_SwapAbility : MonoBehaviour
                     {
                         nextBody = allBodies[x];
                         nextBody.tag = "NextBody"; // marks the next body to swap to
-                        nextPlayerPosition = new Vector3(nextBody.transform.position.x, 0.5f, nextBody.transform.position.z); // stores the position of the next body
+                        nextPlayerPosition = new Vector3(nextBody.transform.position.x, -1.5f, nextBody.transform.position.z); // stores the position of the next body
 
                         canSwap = true;
                     }
