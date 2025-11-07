@@ -1,38 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &146131438301041662
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7850890991985936076}
-  m_Layer: 0
-  m_Name: DoorEndpoints
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7850890991985936076
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 146131438301041662}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 8020479485711702042}
-  - {fileID: 4651500991928206338}
-  m_Father: {fileID: 5185176423442601889}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1949249763239318342
 GameObject:
   m_ObjectHideFlags: 0
@@ -78,7 +45,7 @@ GameObject:
   - component: {fileID: 6431481940644080687}
   - component: {fileID: 1109227653816693054}
   - component: {fileID: 5254742364034026032}
-  - component: {fileID: 8329746670128806522}
+  - component: {fileID: 8335517219777866586}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -98,8 +65,7 @@ Transform:
   m_LocalPosition: {x: 2.4224205, y: 1.13, z: -8.376141}
   m_LocalScale: {x: 0.16695, y: 1.70208, z: 1.1565}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 7850890991985936076}
+  m_Children: []
   m_Father: {fileID: 1471914895024976011}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6431481940644080687
@@ -179,7 +145,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8329746670128806522
+--- !u!114 &8335517219777866586
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -188,73 +154,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1976088909539472556}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd95c3e3421a35c49a82076da5da7c7e, type: 3}
+  m_Script: {fileID: 11500000, guid: 2caad05456ea553428d362cdebe03ca6, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EliasDoor
-  targetDown: {fileID: 8020479485711702042}
-  targetUp: {fileID: 4651500991928206338}
---- !u!1 &5078057174125720891
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4651500991928206338}
-  m_Layer: 0
-  m_Name: DoorUp
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4651500991928206338
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5078057174125720891}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7850890991985936076}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &5787296448470113826
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8020479485711702042}
-  m_Layer: 0
-  m_Name: DoorDown
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8020479485711702042
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5787296448470113826}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.996, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7850890991985936076}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_EditorClassIdentifier: Assembly-CSharp::Door
 --- !u!1 &6979344711734861786
 GameObject:
   m_ObjectHideFlags: 0
@@ -321,7 +223,7 @@ GameObject:
   - component: {fileID: 5477958638798900457}
   - component: {fileID: 3763955779927957801}
   - component: {fileID: 897849823964765067}
-  - component: {fileID: 4464709687469736048}
+  - component: {fileID: 4463296030444588817}
   m_Layer: 0
   m_Name: Button
   m_TagString: Untagged
@@ -424,7 +326,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!114 &4464709687469736048
+--- !u!114 &4463296030444588817
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -433,8 +335,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7578242266492627395}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42b70dcb3f4de794ca37f72b604dedd3, type: 3}
+  m_Script: {fileID: 11500000, guid: 3b8ad6d7b876e3043b9218a3854a4936, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EliasButton
-  playerOnButton: 0
-  door: {fileID: 8329746670128806522}
+  m_EditorClassIdentifier: Assembly-CSharp::DoorButton
+  door: {fileID: 8335517219777866586}
