@@ -57,7 +57,7 @@ public class Script_SwapAbility : MonoBehaviour
                     {
                         nextBody = allBodies[x];
                         nextBody.tag = "NextBody"; // marks the next body to swap to
-                        nextPlayerPosition = new Vector3(nextBody.transform.position.x, -1.5f, nextBody.transform.position.z); // stores the position of the next body
+                        nextPlayerPosition = new Vector3(nextBody.transform.position.x, nextBody.transform.position.y, nextBody.transform.position.z); // stores the position of the next body
 
                         canSwap = true;
                     }
@@ -121,22 +121,7 @@ public class Script_SwapAbility : MonoBehaviour
         }
     }
 
-    // changes the selected body to the next one in the array
-
-    /*
-    private void OnNext()
-    {
-        if (nextBody.GetComponent<playerNumber>().bodyNumber < allBodies.Length && canSwap == true)
-        {
-            nextBody.tag = "InActive"; //resets the tag of the previously selected next body
-            nextBody.GetComponent<MeshRenderer>().material.color = Color.yellow; //resets the color of the previously selected next body
-
-            n++;
-            isGoingNext = true;
-        }
-
-    }
-    */
+   
 
     private void CheckingBodies()
     {
