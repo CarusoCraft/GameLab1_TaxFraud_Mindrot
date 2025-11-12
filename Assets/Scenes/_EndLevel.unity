@@ -1028,6 +1028,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player_Inactive2_First_Room (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8195314721978495322, guid: a215579de1571fb4bbe98592bfeca6ee, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1036,6 +1040,11 @@ PrefabInstance:
 --- !u!4 &322696152 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 772326483278717417, guid: a215579de1571fb4bbe98592bfeca6ee, type: 3}
+  m_PrefabInstance: {fileID: 322696151}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &322696153 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8195314721978495322, guid: a215579de1571fb4bbe98592bfeca6ee, type: 3}
   m_PrefabInstance: {fileID: 322696151}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &336919728
@@ -2388,6 +2397,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player_Inactive2_First_Room (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8195314721978495322, guid: a215579de1571fb4bbe98592bfeca6ee, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2396,6 +2409,11 @@ PrefabInstance:
 --- !u!4 &728756524 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 772326483278717417, guid: a215579de1571fb4bbe98592bfeca6ee, type: 3}
+  m_PrefabInstance: {fileID: 728756523}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &728756525 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8195314721978495322, guid: a215579de1571fb4bbe98592bfeca6ee, type: 3}
   m_PrefabInstance: {fileID: 728756523}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &741487289
@@ -3441,6 +3459,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1097058794}
   - component: {fileID: 1097058793}
+  - component: {fileID: 1097058796}
   - component: {fileID: 1097058795}
   m_Layer: 0
   m_Name: LevelTransition
@@ -3501,6 +3520,21 @@ MonoBehaviour:
   _camera2: {fileID: 797984633}
   x: 25
   y: 25
+--- !u!114 &1097058796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1097058792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a311919e38f81b41acf0b14bb3f669c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ActivateBodies
+  bodiesToActivate:
+  - {fileID: 728756525}
+  - {fileID: 322696153}
 --- !u!1 &1133757960
 GameObject:
   m_ObjectHideFlags: 0
