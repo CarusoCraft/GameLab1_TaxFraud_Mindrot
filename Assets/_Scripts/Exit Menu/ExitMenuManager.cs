@@ -6,6 +6,7 @@ public class ExitMenuManager : MonoBehaviour
     [Header("UI References")]
     public GameObject pauseMenu;  // Assign the PauseMenu panel here
     public Button closeButton;    // Assign the Close Button here
+    public Button extraCloseButton; // Assign the additional Close Button here
 
     private bool isPaused = false;
 
@@ -13,6 +14,7 @@ public class ExitMenuManager : MonoBehaviour
     {
         pauseMenu.SetActive(false);
         closeButton.onClick.AddListener(CloseMenu);
+        extraCloseButton.onClick.AddListener(CloseMenu);
     }
 
     void Update()
