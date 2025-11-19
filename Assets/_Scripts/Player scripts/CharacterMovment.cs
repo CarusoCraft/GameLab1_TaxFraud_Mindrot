@@ -10,6 +10,9 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 velocity;        // Player velocity
     private bool isGrounded;
 
+    [Header("AudioVariables")]
+    [SerializeField] private AudioSource footSteps;
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -25,6 +28,8 @@ public class PlayerMovement : MonoBehaviour
             velocity.y = -2f; // Keep player grounded
         }
 
+        
+
         // Get input from WASD keys
         float x = Input.GetAxis("Horizontal"); // A/D
         float z = Input.GetAxis("Vertical");   // W/S
@@ -39,5 +44,18 @@ public class PlayerMovement : MonoBehaviour
         // Apply gravity
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
+
+
+        if (isGrounded && Input.GetKey("w") || Input.GetKey("a") || Input.GetKey("s") || Input.GetKey("d"))
+        {
+            if (!footSteps.isPlaying)
+            {
+                footSteps.Play();
+            }
+        }
+        else
+        {
+            footSteps.Pause();
+        }
     }
 }

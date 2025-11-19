@@ -14,14 +14,18 @@ public class Script_SwapAbility : MonoBehaviour
     [SerializeField] private GameObject[] allBodies; // array of all bodies in the scene
     [SerializeField] private GameObject nextBody; // the body to swap to
     [SerializeField] private Vector3 nextPlayerPosition; // the position of the next body you're "swapping" to
-    [SerializeField] private int n = 1; // nr of body you're swapping to
-    [SerializeField] private int x = 0; // iterator for allBodies array
-    [SerializeField] private int amountOfUsedBodies = 0; // counts how many bodies have been used already
-    [SerializeField] private int totalBodies = 0; // total number of bodies accessed 
-    [SerializeField] private bool canSwap = false; // checks if swapping is possible
-    [SerializeField] private bool isGoingNext = false; // checks if the player is cycling to the next body
-    [SerializeField] private bool outOfBodies = false; // checks if there are no more bodies to swap to
-    
+    private int n = 1; // nr of body you're swapping to
+    private int x = 0; // iterator for allBodies array
+    private int amountOfUsedBodies = 0; // counts how many bodies have been used already
+    private int totalBodies = 0; // total number of bodies accessed 
+    private bool canSwap = false; // checks if swapping is possible
+    private bool isGoingNext = false; // checks if the player is cycling to the next body
+    private bool outOfBodies = false; // checks if there are no more bodies to swap to
+
+    [Header("Audio")]
+    [SerializeField] private AudioSource swapSound; // sound played when swapping bodies
+    [SerializeField] private AudioSource noSwapSound; // sound played when no bodies are available to swap to
+
 
 
     private void Start()
@@ -88,7 +92,7 @@ public class Script_SwapAbility : MonoBehaviour
 
                 if (nextBody.tag == "NextBody")
                 {
-                    nextBody.GetComponent<MeshRenderer>().material.color = Color.lightBlue; // sets the color of the next body to yellowGreen
+                    nextBody.GetComponent<MeshRenderer>().material.color = Color.purple; // sets the color of the next body to yellowGreen
                 }
             }
         }
@@ -97,11 +101,14 @@ public class Script_SwapAbility : MonoBehaviour
     // swaps the current body with the selected body
     private void OnSwapBody()
     {
+
         if (gameObject.tag == "Active") //checks if the current player is in control of an active body
         {
 
             if(canSwap == true)
             {
+                swapSound.Play(); // plays the swap sound
+
                 // "Inhabits" the new body
                 gameObject.GetComponent<CharacterController>().enabled = false; //disables the character controller on the current body
                 gameObject.GetComponent<PlayerMovement>().enabled = false; //disables the movement script on the current body
@@ -118,6 +125,12 @@ public class Script_SwapAbility : MonoBehaviour
                 n++; // automatically selects the next body in the array after swapping
 
                 canSwap = false; //resets canSwap
+
+            }
+
+            else
+            {
+                noSwapSound.Play(); // plays the no swap sound
             }
         }
     }

@@ -7,7 +7,7 @@ public class SceneSwitcher : MonoBehaviour
     {
         if (other.tag == "Active")
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(2);
         }
     }
 }

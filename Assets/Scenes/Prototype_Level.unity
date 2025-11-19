@@ -2314,6 +2314,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ExitMenuManager
   pauseMenu: {fileID: 1316999284}
   closeButton: {fileID: 1820621215}
+  extraCloseButton: {fileID: 781856849}
 --- !u!4 &811958592
 Transform:
   m_ObjectHideFlags: 0
