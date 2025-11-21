@@ -5,13 +5,15 @@ public class DoorButton : MonoBehaviour
     //References the Door GameObject
     public Door door;
 
+    public bool activeButton = false;
+
 
     //Opens the door when the player collides with the button
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         Debug.Log("Player enter the button");
         door.DoorOpen();
-
+        activeButton = true;
     }
 
 
@@ -19,7 +21,11 @@ public class DoorButton : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         Debug.Log("Player exit the button");
-        door.DoorClose();
+        if(activeButton == true)
+        {
+            door.DoorClose();
+        }
+        
     }
 
 
