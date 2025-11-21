@@ -494,7 +494,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8105739105545964499}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd95c3e3421a35c49a82076da5da7c7e, type: 3}
+  m_Script: {fileID: 11500000, guid: 61555567d5059174094c98187549187d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EliasDoor
   targetDown: {fileID: 0}
