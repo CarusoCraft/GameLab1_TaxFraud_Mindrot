@@ -11,6 +11,11 @@ public class Button_Reader : MonoBehaviour
 
     private bool panelOpen;
 
+    [Header("Audio")]
+    [SerializeField] private GameObject playerSounds;
+
+
+
     void Awake()
     {
         // If user didn't assign buttons, try to auto-find up to 3 in scene.
@@ -65,6 +70,7 @@ public class Button_Reader : MonoBehaviour
         foreach (var m in FindObjectsOfType<PlayerMovement>()) m.enabled = false;
         foreach (var s in FindObjectsOfType<Script_SwapAbility>()) s.enabled = false;
         foreach (var e in FindObjectsOfType<ExitMenuManager>()) e.enabled = false;
+        playerSounds.SetActive(false);
     }
 
     private void ClosePanelAndRestoreInputs()
