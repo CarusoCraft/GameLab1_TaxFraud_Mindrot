@@ -1540,7 +1540,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 772326483278717417, guid: a215579de1571fb4bbe98592bfeca6ee, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.23
+      value: -13.97
       objectReference: {fileID: 0}
     - target: {fileID: 772326483278717417, guid: a215579de1571fb4bbe98592bfeca6ee, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1548,7 +1548,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 772326483278717417, guid: a215579de1571fb4bbe98592bfeca6ee, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 78.5
+      value: 56.61
       objectReference: {fileID: 0}
     - target: {fileID: 772326483278717417, guid: a215579de1571fb4bbe98592bfeca6ee, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1840,11 +1840,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 249312332}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd95c3e3421a35c49a82076da5da7c7e, type: 3}
+  m_Script: {fileID: 11500000, guid: 61555567d5059174094c98187549187d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EliasDoor
-  targetDown: {fileID: 0}
-  targetUp: {fileID: 0}
+  openSound: {fileID: 0}
+  closeSound: {fileID: 0}
 --- !u!65 &249312334
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3289,7 +3289,7 @@ GameObject:
   - component: {fileID: 476868218}
   - component: {fileID: 476868217}
   - component: {fileID: 476868216}
-  - component: {fileID: 476868215}
+  - component: {fileID: 476868219}
   m_Layer: 0
   m_Name: Button_Function
   m_TagString: Untagged
@@ -3313,20 +3313,6 @@ Transform:
   - {fileID: 1415779193}
   m_Father: {fileID: 681772671}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &476868215
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 476868213}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42b70dcb3f4de794ca37f72b604dedd3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EliasButton
-  playerOnButton: 0
-  door: {fileID: 249312333}
 --- !u!136 &476868216
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3406,6 +3392,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 476868213}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &476868219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 476868213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7685f711baf759c4a8f5734aa25d9ca0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EliasButton
+  playerOnButton: 0
+  doorOpen: 0
+  door: {fileID: 249312333}
 --- !u!1001 &477216434
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3963,6 +3964,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 766126932}
   - {fileID: 1945840826}
   - {fileID: 2062275365}
   - {fileID: 4348851959822957406}
@@ -4511,11 +4513,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 588523803}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd95c3e3421a35c49a82076da5da7c7e, type: 3}
+  m_Script: {fileID: 11500000, guid: 61555567d5059174094c98187549187d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EliasDoor
-  targetDown: {fileID: 0}
-  targetUp: {fileID: 0}
+  openSound: {fileID: 0}
+  closeSound: {fileID: 0}
 --- !u!65 &588523805
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5891,7 +5893,7 @@ Transform:
   m_LocalScale: {x: 4.1111007, y: 0, z: 0.19477178}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1945840826}
+  m_Father: {fileID: 528369670}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &766126933
 MeshRenderer:
@@ -6343,11 +6345,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 813354990}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd95c3e3421a35c49a82076da5da7c7e, type: 3}
+  m_Script: {fileID: 11500000, guid: 61555567d5059174094c98187549187d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EliasDoor
-  targetDown: {fileID: 0}
-  targetUp: {fileID: 0}
+  openSound: {fileID: 0}
+  closeSound: {fileID: 0}
 --- !u!65 &813354993
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10913,11 +10915,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 8105739105731505877}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd95c3e3421a35c49a82076da5da7c7e, type: 3}
+  m_Script: {fileID: 11500000, guid: 61555567d5059174094c98187549187d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EliasDoor
-  targetDown: {fileID: 0}
-  targetUp: {fileID: 0}
+  openSound: {fileID: 0}
+  closeSound: {fileID: 0}
 --- !u!1001 &1443299889
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12384,10 +12386,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1759439389}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42b70dcb3f4de794ca37f72b604dedd3, type: 3}
+  m_Script: {fileID: 11500000, guid: 7685f711baf759c4a8f5734aa25d9ca0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EliasButton
   playerOnButton: 0
+  doorOpen: 0
   door: {fileID: 813354992}
 --- !u!136 &1759439392
 CapsuleCollider:
@@ -15233,15 +15236,15 @@ PrefabInstance:
       objectReference: {fileID: 1433719667}
     - target: {fileID: 8079339796693361967, guid: aae3bbe60d97d8e45b193247996a382d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -4.72
       objectReference: {fileID: 0}
     - target: {fileID: 8079339796693361967, guid: aae3bbe60d97d8e45b193247996a382d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -2.51
       objectReference: {fileID: 0}
     - target: {fileID: 8079339796693361967, guid: aae3bbe60d97d8e45b193247996a382d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -6
       objectReference: {fileID: 0}
     - target: {fileID: 8079339796693361967, guid: aae3bbe60d97d8e45b193247996a382d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -15273,10 +15276,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 8079339796693361967, guid: aae3bbe60d97d8e45b193247996a382d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 766126932}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aae3bbe60d97d8e45b193247996a382d, type: 3}
 --- !u!4 &8862159763867217785
