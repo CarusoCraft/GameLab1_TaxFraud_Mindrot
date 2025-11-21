@@ -6,7 +6,7 @@ public class level_2_Loader : MonoBehaviour
 
     public void GoToNewScene()
     {
-        SceneManager.LoadScene("Level2");
+        SceneManager.LoadScene("_Level2");
     }
 
 }

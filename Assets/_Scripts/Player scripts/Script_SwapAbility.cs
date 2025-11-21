@@ -12,14 +12,21 @@ public class Script_SwapAbility : MonoBehaviour
 
     [Header("otherBodies")]
     [SerializeField] private GameObject[] allBodies; // array of all bodies in the scene
-    private GameObject nextBody; // the body to swap to
+    [SerializeField] private GameObject nextBody; // the body to swap to
     [SerializeField] private Vector3 nextPlayerPosition; // the position of the next body you're "swapping" to
     private int n = 1; // nr of body you're swapping to
     private int x = 0; // iterator for allBodies array
     private int amountOfUsedBodies = 0; // counts how many bodies have been used already
+    private int totalBodies = 0; // total number of bodies accessed 
     private bool canSwap = false; // checks if swapping is possible
     private bool isGoingNext = false; // checks if the player is cycling to the next body
     private bool outOfBodies = false; // checks if there are no more bodies to swap to
+
+    [Header("Audio")]
+    [SerializeField] private AudioSource swapSound; // sound played when swapping bodies
+    [SerializeField] private AudioSource noSwapSound; // sound played when no bodies are available to swap to
+
+
 
     private void Start()
     {
@@ -28,73 +35,80 @@ public class Script_SwapAbility : MonoBehaviour
         x = 0; // Resets iterator for next swap
         rb = GetComponent<Rigidbody>(); // Gets the Rigidbody component
         allBodies = GameObject.FindGameObjectsWithTag("InActive"); // Finds all inactive bodies in the scene
+        totalBodies = allBodies.Length; // sets the total number of bodies
+    }
+
+    private void OnEnable()
+    {
+        x = 0; // Resets iterator for next swap
+        rb = GetComponent<Rigidbody>(); // Gets the Rigidbody component
+        allBodies = GameObject.FindGameObjectsWithTag("InActive"); // Finds all inactive bodies in the scene
+        canSwap = true;
+        outOfBodies = false;
+        totalBodies += allBodies.Length; // sets the total number of bodies
     }
 
     private void Update()
     {
+        CheckingBodies();
+
         if (outOfBodies == false)
         {
-            amountOfUsedBodies = 0; // resets the amount of used bodies for checking
-            CheckingBodies();
-
-            if (outOfBodies == false)
+            if (allBodies.Length > 0)
             {
-                if (allBodies.Length > 0)
+
+
+                while (allBodies[x].GetComponent<playerNumber>().bodyNumber != n) // finds the next body to swap to
                 {
+                    x++;
 
-
-                    while (allBodies[x].GetComponent<playerNumber>().bodyNumber != n) // finds the next body to swap to
+                    if (x > allBodies.Length - 1)
                     {
-                        x++;
-
-                        if (x > allBodies.Length - 1)
-                        {
-                            x = 0;
-                        }
+                        x = 0;
                     }
+                }
 
-                    if (allBodies[x].GetComponent<playerNumber>().bodyNumber == n && allBodies[x].tag != "UsedPlayer") //assigns the next body to swap to
+                if (allBodies[x].GetComponent<playerNumber>().bodyNumber == n && allBodies[x].tag != "UsedPlayer") //assigns the next body to swap to
+                {
+                    nextBody = allBodies[x];
+                    nextBody.tag = "NextBody"; // marks the next body to swap to
+                    nextPlayerPosition = new Vector3(nextBody.transform.position.x, nextBody.transform.position.y, nextBody.transform.position.z); // stores the position of the next body
+
+                    canSwap = true;
+                }
+                else
+                {
+                    canSwap = false;
+
+                    if (isGoingNext == true && n < allBodies.Length)
                     {
-                        nextBody = allBodies[x];
-                        nextBody.tag = "NextBody"; // marks the next body to swap to
-                        nextPlayerPosition = new Vector3(nextBody.transform.position.x, nextBody.transform.position.y, nextBody.transform.position.z); // stores the position of the next body
-
-                        canSwap = true;
+                        n++;
                     }
-                    else
+                    else if (isGoingNext == true && n >= allBodies.Length)
                     {
-                        canSwap = false;
-
-                        if (isGoingNext == true && n < allBodies.Length)
-                        {
-                            n++;
-                        }
-                        else if (isGoingNext == true && n >= allBodies.Length)
-                        {
-                            n = 1;
-                        }
+                        n = 1;
                     }
+                }
 
-                    if (nextBody.tag == "NextBody")
-                    {
-                        nextBody.GetComponent<MeshRenderer>().material.color = Color.lightBlue; // sets the color of the next body to yellowGreen
-                    }
+                if (nextBody.tag == "NextBody")
+                {
+                    nextBody.GetComponent<MeshRenderer>().material.color = Color.purple; // sets the color of the next body to yellowGreen
                 }
             }
         }
-
-
-
     }
 
     // swaps the current body with the selected body
     private void OnSwapBody()
     {
+
         if (gameObject.tag == "Active") //checks if the current player is in control of an active body
         {
 
             if(canSwap == true)
             {
+                swapSound.Play(); // plays the swap sound
+
                 // "Inhabits" the new body
                 gameObject.GetComponent<CharacterController>().enabled = false; //disables the character controller on the current body
                 gameObject.GetComponent<PlayerMovement>().enabled = false; //disables the movement script on the current body
@@ -108,37 +122,43 @@ public class Script_SwapAbility : MonoBehaviour
                 nextBody.tag = "UsedPlayer"; //sets the current body to used
                 nextBody.GetComponent<MeshRenderer>().material.color = Color.red; // sets the color of the used body to red
 
-                if(n < allBodies.Length) 
-                {
-                    n++; // automatically selects the next body in the array after swapping
-                }
-
+                n++; // automatically selects the next body in the array after swapping
 
                 canSwap = false; //resets canSwap
 
+            }
 
+            else
+            {
+                noSwapSound.Play(); // plays the no swap sound
             }
         }
     }
-
-   
 
     private void CheckingBodies()
     {
-        for (int i = 0; i < allBodies.Length; i++)
+        if (outOfBodies == false)
         {
-            if (allBodies[i].tag == "UsedPlayer")
+            for (int i = 0; i < allBodies.Length; i++)
             {
-                amountOfUsedBodies++;
+                if (allBodies[i].tag == "UsedPlayer")
+                {
+                    amountOfUsedBodies++;
+                }
             }
-
         }
+        
 
-        if (amountOfUsedBodies >= allBodies.Length)
+        if (amountOfUsedBodies >= totalBodies)
         {
             outOfBodies = true;
+        }
+        else
+        {
+            outOfBodies = false;
         }
 
     }
 
+    
 }
