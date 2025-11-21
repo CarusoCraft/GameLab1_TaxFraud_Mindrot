@@ -92,7 +92,7 @@ public class Script_SwapAbility : MonoBehaviour
 
                 if (nextBody.tag == "NextBody")
                 {
-                    nextBody.GetComponent<MeshRenderer>().material.color = Color.lightBlue; // sets the color of the next body to yellowGreen
+                    nextBody.GetComponent<MeshRenderer>().material.color = Color.purple; // sets the color of the next body to yellowGreen
                 }
             }
         }
