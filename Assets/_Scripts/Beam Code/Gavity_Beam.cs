@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Collider))]
-public class TractorBeam : MonoBehaviour
+public class Gavity_Beam : MonoBehaviour
 {
     [Tooltip("Acceleration applied to Rigidbodies (or speed for CharacterController).")]
     [SerializeField] private float pullStrength = 12f;
