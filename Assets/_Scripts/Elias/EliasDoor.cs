@@ -11,6 +11,8 @@ public class EliasDoor : MonoBehaviour
     [SerializeField] private Transform targetDown;
     [SerializeField] private Transform targetUp;
     
+    [SerializeField] private AudioSource openSound;
+    [SerializeField] private AudioSource closeSound;
 
 
 
@@ -21,6 +23,7 @@ public class EliasDoor : MonoBehaviour
     {
         gameObject.SetActive(false);
         Debug.Log("Door opens");
+        openSound.Play();
     }
 
 
@@ -29,5 +32,6 @@ public class EliasDoor : MonoBehaviour
     {
         gameObject.SetActive(true);
         Debug.Log("Door close's");
+        closeSound.Play();
     }
 }
