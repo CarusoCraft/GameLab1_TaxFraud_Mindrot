@@ -4,9 +4,8 @@ public class Timed_Button : MonoBehaviour
 {
     [SerializeField]
     private EliasDoor door;
-    [SerializeField]
     private float buttonTimer = 0;
-    [SerializeField] [Range(10, 20)]
+    [SerializeField] [Range(5, 25)]
     private float timeBeforeClose;
 
     private bool isPressed = false;

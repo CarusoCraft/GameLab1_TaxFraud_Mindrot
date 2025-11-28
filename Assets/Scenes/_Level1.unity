@@ -8858,6 +8858,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17cf9aca8e0ce2342a85bf16a8f97d0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneSwitcher
+  sceneNumber: 2
 --- !u!1001 &1178156292
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12917,6 +12918,8 @@ MonoBehaviour:
   _camera2: {fileID: 1185565393}
   x: 45
   y: 25
+  z: 0
+  orthographicSize: 0
 --- !u!114 &1839853065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13952,6 +13955,8 @@ MonoBehaviour:
   _camera2: {fileID: 1185565393}
   x: 31
   y: 16
+  z: 0
+  orthographicSize: 0
 --- !u!114 &2062275368
 MonoBehaviour:
   m_ObjectHideFlags: 0
