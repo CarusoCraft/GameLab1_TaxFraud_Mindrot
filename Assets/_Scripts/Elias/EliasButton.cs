@@ -10,7 +10,7 @@ public class EliasButton : MonoBehaviour
 
     public EliasDoor door;
 
-   
+
     //Private to say a object has enter the button
     private void OnTriggerStay(Collider other)
     {

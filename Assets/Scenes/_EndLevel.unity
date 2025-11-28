@@ -1498,7 +1498,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.5, y: 1.9999995, z: 0.5}
+  m_Size: {x: 0.5, y: 19.3, z: 0.5}
   m_Center: {x: 0, y: 3, z: 0}
 --- !u!1 &443290773
 GameObject:
@@ -5132,6 +5132,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Complete_Button
       objectReference: {fileID: 0}
+    - target: {fileID: 4028665981947061797, guid: aae3bbe60d97d8e45b193247996a382d, type: 3}
+      propertyPath: m_Size.z
+      value: 8.09
+      objectReference: {fileID: 0}
     - target: {fileID: 7046801472298845192, guid: aae3bbe60d97d8e45b193247996a382d, type: 3}
       propertyPath: door
       value: 
@@ -6796,7 +6800,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.5, y: 1.9999995, z: 0.5}
+  m_Size: {x: 0.5, y: 22.03, z: 0.5}
   m_Center: {x: 0, y: 3, z: 0}
 --- !u!1 &1944101168
 GameObject:
@@ -7141,7 +7145,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.5, y: 1.9999995, z: 0.5}
+  m_Size: {x: 0.5, y: 14.1, z: 0.5}
   m_Center: {x: 0, y: 3, z: 0}
 --- !u!1001 &1993476966
 PrefabInstance:

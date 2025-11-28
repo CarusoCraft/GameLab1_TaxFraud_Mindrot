@@ -113,7 +113,7 @@ public class Script_SwapAbility : MonoBehaviour
                 gameObject.GetComponent<CharacterController>().enabled = false; //disables the character controller on the current body
                 gameObject.GetComponent<PlayerMovement>().enabled = false; //disables the movement script on the current body
                 nextBody.GetComponent<BoxCollider>().enabled = false; //disables the collider on the next body
-                nextBody.transform.position = new Vector3 (gameObject.transform.position.x , gameObject.transform.position.y + 0.1f , gameObject.transform.position.z); // moves the next body to the current body's position
+                nextBody.transform.position = new Vector3 (gameObject.transform.position.x , gameObject.transform.position.y , gameObject.transform.position.z); // moves the next body to the current body's position
                 gameObject.transform.position = nextPlayerPosition; // moves the current body to the next body's position
                 gameObject.GetComponent<CharacterController>().enabled = true; //disables the character controller on the current body
                 gameObject.GetComponent<PlayerMovement>().enabled = true; //disables the movement script on the current body
