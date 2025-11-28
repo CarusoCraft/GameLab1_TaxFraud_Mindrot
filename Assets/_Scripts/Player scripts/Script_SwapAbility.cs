@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 public class Script_SwapAbility : MonoBehaviour
 {
     [Header("activeBody")] 
-    private Rigidbody rb; // Rigidbody of the active body
     private int bodyNumber; // the number of the Active body
 
 
@@ -33,7 +32,6 @@ public class Script_SwapAbility : MonoBehaviour
         gameObject.tag = "Active"; // sets the player body to active
 
         x = 0; // Resets iterator for next swap
-        rb = GetComponent<Rigidbody>(); // Gets the Rigidbody component
         allBodies = GameObject.FindGameObjectsWithTag("InActive"); // Finds all inactive bodies in the scene
         totalBodies = allBodies.Length; // sets the total number of bodies
     }
@@ -41,7 +39,6 @@ public class Script_SwapAbility : MonoBehaviour
     private void OnEnable()
     {
         x = 0; // Resets iterator for next swap
-        rb = GetComponent<Rigidbody>(); // Gets the Rigidbody component
         allBodies = GameObject.FindGameObjectsWithTag("InActive"); // Finds all inactive bodies in the scene
         canSwap = true;
         outOfBodies = false;

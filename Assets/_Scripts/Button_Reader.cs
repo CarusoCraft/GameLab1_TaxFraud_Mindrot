@@ -81,8 +81,13 @@ public class Button_Reader : MonoBehaviour
             timer -= Time.deltaTime;
             
         }
+        if (timer == 1)
+        {
+            monsterGrowl.Play();
+        }
         if (timer <= 0)
         {
+
             OpenPanelAndDisableInputs();
             opening = false;
         }
