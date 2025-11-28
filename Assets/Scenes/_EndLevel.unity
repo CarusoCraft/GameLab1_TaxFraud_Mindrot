@@ -3522,6 +3522,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8573511522284430008}
+  - {fileID: 1001085693}
   m_Father: {fileID: 1698066248}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &923531152
@@ -3831,6 +3832,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -6686669030262739812, guid: 175dcd25587abc7459d00301e06943e9, type: 3}
+--- !u!4 &1001085693 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8573511523948497366, guid: 2523326e6b3bea14ea1ad92d9522a873, type: 3}
+  m_PrefabInstance: {fileID: 1708157806}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1097058792
 GameObject:
   m_ObjectHideFlags: 0
@@ -3900,8 +3906,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Camera_Controller
   _camera: {fileID: 797984629}
   _camera2: {fileID: 797984633}
-  x: 25
-  y: 25
+  x: 0
+  y: 0
+  z: 25
+  orthographicSize: 25
 --- !u!114 &1097058796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6020,6 +6028,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: doorframe
       objectReference: {fileID: 0}
+    - target: {fileID: 7929836071683382796, guid: 2523326e6b3bea14ea1ad92d9522a873, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8573511523948497366, guid: 2523326e6b3bea14ea1ad92d9522a873, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.56
@@ -6206,17 +6218,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 757892595}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1717807963 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8000802288516142759, guid: 2523326e6b3bea14ea1ad92d9522a873, type: 3}
-  m_PrefabInstance: {fileID: 1708157806}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61555567d5059174094c98187549187d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EliasDoor
 --- !u!1 &1742176004
 GameObject:
   m_ObjectHideFlags: 0

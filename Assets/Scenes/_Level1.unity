@@ -2584,7 +2584,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 7be011d945767184ea399cdf19dc2ec1, type: 3}
       propertyPath: m_LocalScale.x
-      value: -342.57355
+      value: 342.5735
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7be011d945767184ea399cdf19dc2ec1, type: 3}
       propertyPath: m_LocalScale.z
@@ -2592,7 +2592,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7be011d945767184ea399cdf19dc2ec1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.98
+      value: -3.19
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7be011d945767184ea399cdf19dc2ec1, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5349,7 +5349,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 7be011d945767184ea399cdf19dc2ec1, type: 3}
       propertyPath: m_LocalScale.x
-      value: -105.429955
+      value: 105.43
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7be011d945767184ea399cdf19dc2ec1, type: 3}
       propertyPath: m_LocalScale.z
@@ -5357,15 +5357,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7be011d945767184ea399cdf19dc2ec1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 13.53737
+      value: 13.54
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7be011d945767184ea399cdf19dc2ec1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.258121
+      value: -6.26
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7be011d945767184ea399cdf19dc2ec1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 83.35443
+      value: 81.24
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7be011d945767184ea399cdf19dc2ec1, type: 3}
       propertyPath: m_LocalRotation.w
@@ -11998,10 +11998,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Camera_Controller
   _camera: {fileID: 1185565389}
   _camera2: {fileID: 1185565393}
-  x: 45
-  y: 25
-  z: 0
-  orthographicSize: 0
+  x: 0
+  y: 0
+  z: 45
+  orthographicSize: 31.5
 --- !u!114 &1839853065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13103,10 +13103,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Camera_Controller
   _camera: {fileID: 1185565389}
   _camera2: {fileID: 1185565393}
-  x: 31
-  y: 16
-  z: 0
-  orthographicSize: 0
+  x: 0
+  y: 5.8
+  z: 25.8
+  orthographicSize: 19.7
 --- !u!114 &2062275368
 MonoBehaviour:
   m_ObjectHideFlags: 0
