@@ -1,3 +1,4 @@
+
 using System.Linq;
 using UnityEngine;
 
@@ -15,6 +16,9 @@ public class Button_Reader : MonoBehaviour
     [SerializeField] private GameObject playerSounds;
 
 
+    [SerializeField] private float timer = 5;
+    [SerializeField] private bool opening = false;
+
 
     void Awake()
     {
@@ -31,6 +35,8 @@ public class Button_Reader : MonoBehaviour
         {
             if (b != null) b.PressedChanged += OnButtonChanged;
         }
+
+
     }
 
     private void OnDestroy()
@@ -56,21 +62,50 @@ public class Button_Reader : MonoBehaviour
         }
 
         bool allPressed = buttons.All(b => b != null && b.IsPressed);
+        Debug.Log("All buttons pressed: " + allPressed);
 
-        if (allPressed && !panelOpen) OpenPanelAndDisableInputs();
+        if (allPressed && !panelOpen)
+        {
+            opening = true;
+        }
         else if (!allPressed && panelOpen) ClosePanelAndRestoreInputs();
     }
+
+    private void Update()
+    {
+        if (opening)
+        {
+            timer -= Time.deltaTime;
+            
+        }
+        if (timer <= 0)
+        {
+            OpenPanelAndDisableInputs();
+            opening = false;
+        }
+    }
+
+
 
     private void OpenPanelAndDisableInputs()
     {
         panelOpen = true;
         if (panelToOpen != null) panelToOpen.SetActive(true);
 
+        //mute button sounds
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            buttons[i].GetComponent<Button_Press>().pressExitButtonSound.mute = true;
+        }
+
         // Disable player movement, swap ability and exit menu manager in scene
         foreach (var m in FindObjectsOfType<PlayerMovement>()) m.enabled = false;
         foreach (var s in FindObjectsOfType<Script_SwapAbility>()) s.enabled = false;
         foreach (var e in FindObjectsOfType<ExitMenuManager>()) e.enabled = false;
         playerSounds.SetActive(false);
+
+        
+
     }
 
     private void ClosePanelAndRestoreInputs()
