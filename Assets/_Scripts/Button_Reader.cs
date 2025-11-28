@@ -14,6 +14,8 @@ public class Button_Reader : MonoBehaviour
 
     [Header("Audio")]
     [SerializeField] private GameObject playerSounds;
+    [SerializeField] private AudioSource tubeOpenSound;
+    [SerializeField] private AudioSource monsterGrowl;
 
 
     [SerializeField] private float timer = 5;
@@ -67,6 +69,7 @@ public class Button_Reader : MonoBehaviour
         if (allPressed && !panelOpen)
         {
             opening = true;
+            tubeOpenSound.Play();
         }
         else if (!allPressed && panelOpen) ClosePanelAndRestoreInputs();
     }
