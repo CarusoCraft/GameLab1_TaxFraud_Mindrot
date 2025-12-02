@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 public class Script_SwapAbility : MonoBehaviour
 {
     [Header("activeBody")] 
-    private Rigidbody rb; // Rigidbody of the active body
     private int bodyNumber; // the number of the Active body
 
 
@@ -33,7 +32,6 @@ public class Script_SwapAbility : MonoBehaviour
         gameObject.tag = "Active"; // sets the player body to active
 
         x = 0; // Resets iterator for next swap
-        rb = GetComponent<Rigidbody>(); // Gets the Rigidbody component
         allBodies = GameObject.FindGameObjectsWithTag("InActive"); // Finds all inactive bodies in the scene
         totalBodies = allBodies.Length; // sets the total number of bodies
     }
@@ -41,7 +39,6 @@ public class Script_SwapAbility : MonoBehaviour
     private void OnEnable()
     {
         x = 0; // Resets iterator for next swap
-        rb = GetComponent<Rigidbody>(); // Gets the Rigidbody component
         allBodies = GameObject.FindGameObjectsWithTag("InActive"); // Finds all inactive bodies in the scene
         canSwap = true;
         outOfBodies = false;
@@ -113,7 +110,7 @@ public class Script_SwapAbility : MonoBehaviour
                 gameObject.GetComponent<CharacterController>().enabled = false; //disables the character controller on the current body
                 gameObject.GetComponent<PlayerMovement>().enabled = false; //disables the movement script on the current body
                 nextBody.GetComponent<BoxCollider>().enabled = false; //disables the collider on the next body
-                nextBody.transform.position = gameObject.transform.position; // moves the next body to the current body's position
+                nextBody.transform.position = new Vector3 (gameObject.transform.position.x , gameObject.transform.position.y , gameObject.transform.position.z); // moves the next body to the current body's position
                 gameObject.transform.position = nextPlayerPosition; // moves the current body to the next body's position
                 gameObject.GetComponent<CharacterController>().enabled = true; //disables the character controller on the current body
                 gameObject.GetComponent<PlayerMovement>().enabled = true; //disables the movement script on the current body

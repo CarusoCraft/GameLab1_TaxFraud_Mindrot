@@ -4,26 +4,54 @@ using UnityEngine.EventSystems;
 public class EliasButton : MonoBehaviour
 {
     // Checking if there is a player on the button
-    public bool playerOnButton = false;
+    [SerializeField] private bool playerOnButton = false;
+    [SerializeField] private bool doorOpen = false;
+    private float closingTimer = 0.5f;
 
     public EliasDoor door;
 
-   
+
     //Private to say a object has enter the button
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        Debug.Log("Player enter the button");
-        door.DoorOpen();
+        if (doorOpen == false)
+        {
+            door.DoorOpen();
+            doorOpen = true;
+            playerOnButton = true;
+        }
+        else
+        {
+            closingTimer = 0.5f;
+            playerOnButton = true;
+        }
+        
         
     }
 
-
-    //Private to say a object has exit the button
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log("Player exit the button");
-        door.DoorClose();
+        playerOnButton = false;
+
     }
+
+    private void Update()
+    {
+        if (playerOnButton == false && doorOpen == true)
+        {
+            closingTimer -= Time.deltaTime;
+
+            if (closingTimer <= 0f)
+            {
+                door.DoorClose();
+                doorOpen = false;
+                closingTimer = 0.5f;
+            }
+
+        }
+    }
+
+
 
 
 }

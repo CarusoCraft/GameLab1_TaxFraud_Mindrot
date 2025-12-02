@@ -1,103 +1,87 @@
-using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Collider))]
 public class Gavity_Beam : MonoBehaviour
 {
-    [Header("Beam Settings")]
-    public string targetTag = "Player";           // Tag used to identify the character
-    public float pullStrength = 40f;             // Base pull strength (acceleration)
-    public float maxPullDistance = 12f;          // Distance at which pull falls to zero
-    public float stopDistance = 1f;              // When closer than this, stop pulling
-    public bool active = false;                  // Toggle the beam on/off
+    [Tooltip("Acceleration applied to Rigidbodies (or speed for CharacterController).")]
+    [SerializeField] private float pullStrength = 12f;
+    [Tooltip("Stop pulling when player is this close to beam origin.")]
+    [SerializeField] private float stopDistance = 0.5f;
+    [Tooltip("If true, PlayerMovement will be disabled while pulled.")]
+    [SerializeField] private bool disablePlayerMovement = true;
+    [Tooltip("Set to a tag (e.g. \"Player\") to only affect that tagged object. Leave empty to accept any object.")]
+    [SerializeField] private string playerTag = "Player";
 
-    [Header("Optional Visuals")]
-    public LineRenderer lineRenderer;            // Optional: draw a line from origin to target
-    public Transform beamOrigin;                 // point to pull toward (defaults to this.transform)
+    private Rigidbody pulledRb;
+    private CharacterController pulledCc;
+    private PlayerMovement pulledMovement;
 
-    // Internals
-    readonly HashSet<Rigidbody> targets = new HashSet<Rigidbody>();
-
-    void Reset()
+    private void Reset()
     {
-        beamOrigin = transform;
+        var col = GetComponent<Collider>();
+        if (col != null) col.isTrigger = true;
     }
 
-    void Awake()
+    private void OnTriggerEnter(Collider other)
     {
-        if (beamOrigin == null) beamOrigin = transform;
-        if (lineRenderer != null) lineRenderer.positionCount = 2;
-    }
+        if (!string.IsNullOrEmpty(playerTag) && !other.CompareTag(playerTag)) return;
 
-    void FixedUpdate()
-    {
-        if (!active) return;
-
-        if (targets.Count == 0)
+        if (other.attachedRigidbody != null)
         {
-            if (lineRenderer != null) lineRenderer.enabled = false;
-            return;
+            pulledRb = other.attachedRigidbody;
+        }
+        else
+        {
+            pulledCc = other.GetComponent<CharacterController>() ?? other.GetComponentInParent<CharacterController>();
         }
 
-        foreach (var rb in targets)
+        if ((pulledRb != null || pulledCc != null) && disablePlayerMovement)
         {
-            if (rb == null) continue;
-
-            Vector3 dir = beamOrigin.position - rb.position;
-            float distance = dir.magnitude;
-
-            if (distance <= stopDistance)
-            {
-                // Close enough � remove velocity component toward the beam origin
-                Vector3 toTargetDir = dir.normalized;
-                float approachSpeed = Vector3.Dot(rb.linearVelocity, toTargetDir);
-                if (approachSpeed > 0f)
-                {
-                    rb.linearVelocity -= toTargetDir * approachSpeed;
-                }
-
-                continue;
-            }
-
-            if (distance > maxPullDistance) continue;
-
-            float falloff = 1f - Mathf.Clamp01(distance / maxPullDistance); // 0..1
-            float force = pullStrength * falloff;
-
-            // Apply as acceleration so heavier objects still move predictably
-            rb.AddForce(dir.normalized * force, ForceMode.Acceleration);
-
-            // Optional: draw line to this target
-            if (lineRenderer != null)
-            {
-                lineRenderer.enabled = true;
-                lineRenderer.SetPosition(0, beamOrigin.position);
-                lineRenderer.SetPosition(1, rb.position);
-            }
+            var t = (pulledRb != null) ? pulledRb.transform : pulledCc.transform;
+            pulledMovement = t.GetComponent<PlayerMovement>();
+            if (pulledMovement != null) pulledMovement.enabled = false;
         }
     }
 
-    // Use a trigger collider (SphereCollider recommended) to detect when the player enters the beam area.
-    // Make sure the collider is set as "Is Trigger" and its radius >= maxPullDistance.
-    void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if (!other.CompareTag(targetTag)) return;
-        var rb = other.attachedRigidbody;
-        if (rb != null) targets.Add(rb);
+        // Only operate on the object we recorded in OnTriggerEnter
+        if (pulledRb == null && pulledCc == null) return;
+        if (pulledRb != null && other.attachedRigidbody != pulledRb) return;
+        if (pulledCc != null && other.GetComponentInParent<CharacterController>() != pulledCc) return;
+
+        Vector3 origin = transform.position;
+        if (pulledRb != null)
+        {
+            Vector3 toOrigin = origin - pulledRb.position;
+            float dist = toOrigin.magnitude;
+            if (dist <= stopDistance) return;
+            Vector3 accel = toOrigin.normalized * pullStrength;
+            pulledRb.AddForce(accel, ForceMode.Acceleration);
+        }
+        else if (pulledCc != null)
+        {
+            Vector3 toOrigin = origin - pulledCc.transform.position;
+            float dist = toOrigin.magnitude;
+            if (dist <= stopDistance) return;
+            Vector3 move = toOrigin.normalized * pullStrength * Time.deltaTime;
+            pulledCc.Move(move);
+        }
     }
 
-    void OnTriggerExit(Collider other)
+    private void OnTriggerExit(Collider other)
     {
-        if (!other.CompareTag(targetTag)) return;
-        var rb = other.attachedRigidbody;
-        if (rb != null) targets.Remove(rb);
+        if (pulledRb != null && other.attachedRigidbody == pulledRb) ClearPull();
+        if (pulledCc != null && other.GetComponentInParent<CharacterController>() == pulledCc) ClearPull();
     }
 
-    public void ActivateBeam() => active = true;
-    public void DeactivateBeam() => active = false;
-
-    void OnDisable()
+    private void ClearPull()
     {
-        targets.Clear();
-        if (lineRenderer != null) lineRenderer.enabled = false;
+        if (pulledMovement != null) pulledMovement.enabled = true;
+        pulledMovement = null;
+        pulledRb = null;
+        pulledCc = null;
     }
+
+    private void OnDisable() => ClearPull();
 }
