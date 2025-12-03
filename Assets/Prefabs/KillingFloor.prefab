@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 8015018281881240846}
   - component: {fileID: 656425846277660506}
   - component: {fileID: 8919995011119364401}
-  - component: {fileID: 4417387824444507950}
   - component: {fileID: 5028103306215002089}
   m_Layer: 0
   m_Name: KillingFloor
@@ -113,19 +112,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &4417387824444507950
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2270666610520715440}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44c456a8f5f81e440bc8a7798c1ab7b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Death_menu
-  Player_Active: {fileID: 0}
 --- !u!114 &5028103306215002089
 MonoBehaviour:
   m_ObjectHideFlags: 0
