@@ -22,6 +22,9 @@ public class Script_SwapAbility : MonoBehaviour
     private bool outOfBodies = false; // checks if there are no more bodies to swap to
 
     [Header("Audio")]
+    private float soundTimer = 0.5f;
+    private bool swapSoundPlayed = false;
+    private bool noSwapSoundPlayed = false;
     [SerializeField] private AudioSource swapSound; // sound played when swapping bodies
     [SerializeField] private AudioSource noSwapSound; // sound played when no bodies are available to swap to
 
@@ -93,6 +96,27 @@ public class Script_SwapAbility : MonoBehaviour
                 }
             }
         }
+
+        if (swapSoundPlayed == true)
+        {
+            soundTimer -= Time.deltaTime;
+            if (soundTimer < 0)
+            {
+                swapSoundPlayed = false;
+                soundTimer = 0.5f;
+            }
+        }
+
+        if (noSwapSoundPlayed == true)
+        {
+            soundTimer -= Time.deltaTime;
+            if (soundTimer < 0)
+            {
+                noSwapSoundPlayed = false;
+                soundTimer = 0.5f;
+            }
+        }
+
     }
 
     // swaps the current body with the selected body
@@ -104,7 +128,11 @@ public class Script_SwapAbility : MonoBehaviour
 
             if(canSwap == true)
             {
-                swapSound.Play(); // plays the swap sound
+                if (swapSoundPlayed == false)
+                {
+                    swapSound.Play(); // plays the swap sound
+                    swapSoundPlayed = true;
+                }
 
                 // "Inhabits" the new body
                 gameObject.GetComponent<CharacterController>().enabled = false; //disables the character controller on the current body
@@ -125,9 +153,10 @@ public class Script_SwapAbility : MonoBehaviour
 
             }
 
-            else
+            else if (noSwapSoundPlayed == false)
             {
                 noSwapSound.Play(); // plays the no swap sound
+                noSwapSoundPlayed = true;
             }
         }
     }
