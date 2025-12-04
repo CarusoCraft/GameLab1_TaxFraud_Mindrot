@@ -8284,8 +8284,6 @@ MonoBehaviour:
   SwapTutorial: {fileID: 146135987}
   GameplayPanel: {fileID: 1887368979}
   PanelButton: {fileID: 2016527090}
-  startCooldown: 4
-  buttonCooldown: 1
 --- !u!4 &1144311962
 Transform:
   m_ObjectHideFlags: 0

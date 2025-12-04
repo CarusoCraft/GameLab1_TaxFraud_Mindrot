@@ -6,17 +6,19 @@ public class StartPlayer : MonoBehaviour
     public GameObject MovementTutorial;
     public GameObject ButtonTutorial;
     public GameObject SwapTutorial;
+    public GameObject GameplayPanel;
+    public GameObject PanelButton;
 
 
     private float startCooldown = 4;
     private float buttonCooldown = 1;
     private float swapCooldown = 3;
 
+    private bool panelClosed = true;
     private bool startPlay = false;
 
     private void Start()
     {
-        MovementTutorial.SetActive(true);
         
     }
 
@@ -24,12 +26,12 @@ public class StartPlayer : MonoBehaviour
     private void FixedUpdate()
     {
 
-        if (startCooldown > 0)
+        if (startCooldown > 0 && panelClosed == false)
         {
             startCooldown -= Time.deltaTime;
             
         }
-        else if (startCooldown < 0)
+        else if (startCooldown <= 0)
         {
             startCooldown = 0;
             startPlay = true;
@@ -81,5 +83,13 @@ public class StartPlayer : MonoBehaviour
     {
         MovementTutorial.SetActive(false);
     }
+
+
+    public void GameplayExplained()
+    {
+        panelClosed = false;
+        GameplayPanel.SetActive(false);
+    }
+
 
 }
