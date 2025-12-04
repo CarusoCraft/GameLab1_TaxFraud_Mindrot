@@ -10655,9 +10655,9 @@ MonoBehaviour:
   _camera: {fileID: 1428039439}
   _camera2: {fileID: 1428039442}
   x: 41.1
-  y: 6.2
+  y: 9.6
   z: -9.4
-  orthographicSize: 36
+  orthographicSize: 21
 --- !u!114 &2013872478
 MonoBehaviour:
   m_ObjectHideFlags: 0
