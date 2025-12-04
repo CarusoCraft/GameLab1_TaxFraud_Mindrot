@@ -6,19 +6,15 @@ public class KillingFloor : MonoBehaviour
     public GameObject Player_Active;
 
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if(gameObject.name == "Player_Active")
-        {
             PlayerGameOver();
-            DeathMenu.SetActive(true);
             Player_Active.SetActive(false);
-        }
+            Debug.Log("Player died in a hole");
     }
 
-    void PlayerGameOver()
+    public void PlayerGameOver()
     {
-        Debug.Log("Dead");
-
+        DeathMenu.SetActive(true);
     }
 }
