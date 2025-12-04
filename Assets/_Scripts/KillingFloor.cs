@@ -3,14 +3,16 @@ using UnityEngine;
 public class KillingFloor : MonoBehaviour
 {
     public GameObject DeathMenu;
-    public GameObject Player_Active;
 
 
     private void OnTriggerEnter(Collider other)
     {
+        if(other.CompareTag("Active"))
+        {
             PlayerGameOver();
-            Player_Active.SetActive(false);
-            Debug.Log("Player died in a hole");
+            DeathMenu.SetActive(true);
+            Time.timeScale = 0f;
+        }
     }
 
     public void PlayerGameOver()

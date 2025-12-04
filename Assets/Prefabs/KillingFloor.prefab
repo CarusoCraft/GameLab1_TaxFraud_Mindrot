@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6234395402721141758}
   - component: {fileID: 8015018281881240846}
   - component: {fileID: 656425846277660506}
-  - component: {fileID: 8919995011119364401}
+  - component: {fileID: 5114248355570255726}
   - component: {fileID: 5028103306215002089}
   m_Layer: 0
   m_Name: KillingFloor
@@ -90,8 +90,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8919995011119364401
-MeshCollider:
+--- !u!65 &5114248355570255726
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -105,13 +105,12 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+  serializedVersion: 3
+  m_Size: {x: 10, y: 2.220446e-16, z: 10}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5028103306215002089
 MonoBehaviour:
   m_ObjectHideFlags: 0
