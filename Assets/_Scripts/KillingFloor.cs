@@ -3,22 +3,20 @@ using UnityEngine;
 public class KillingFloor : MonoBehaviour
 {
     public GameObject DeathMenu;
-    public GameObject Player_Active;
 
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if(gameObject.name == "Player_Active")
+        if(other.CompareTag("Active"))
         {
             PlayerGameOver();
             DeathMenu.SetActive(true);
-            Player_Active.SetActive(false);
+            Time.timeScale = 0f;
         }
     }
 
-    void PlayerGameOver()
+    public void PlayerGameOver()
     {
-        Debug.Log("Dead");
-
+        DeathMenu.SetActive(true);
     }
 }
